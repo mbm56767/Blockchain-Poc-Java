@@ -9,7 +9,7 @@ import java.util.HashMap;
 /**
  * Created by rajesh on 23/07/18.
  */
-public class NoobChainFinal {
+public class RunBlockChain {
 
     public static ArrayList<Block> blockchain = new ArrayList<Block>();
     public static HashMap<String,TransactionOutput> UTXOs = new HashMap<String,TransactionOutput>();

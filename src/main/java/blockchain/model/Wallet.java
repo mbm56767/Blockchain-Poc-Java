@@ -1,6 +1,6 @@
 package blockchain.model;
 
-import blockchain.NoobChainFinal;
+import blockchain.RunBlockChain;
 
 import java.security.*;
 import java.security.spec.ECGenParameterSpec;
@@ -44,7 +44,7 @@ public class Wallet {
     //returns balance and stores the UTXO's owned by this wallet in this.UTXOs
     public float getBalance() {
         float total = 0;
-        for (Map.Entry<String, TransactionOutput> item: NoobChainFinal.UTXOs.entrySet()){
+        for (Map.Entry<String, TransactionOutput> item: RunBlockChain.UTXOs.entrySet()){
             TransactionOutput UTXO = item.getValue();
             if(UTXO.isMine(publicKey)) { //if output belongs to me ( if coins belong to me )
                 UTXOs.put(UTXO.id,UTXO); //add it to our list of unspent transactions.

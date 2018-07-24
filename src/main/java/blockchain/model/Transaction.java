@@ -1,6 +1,6 @@
 package blockchain.model;
 
-import blockchain.NoobChainFinal;
+import blockchain.RunBlockChain;
 import blockchain.util.StringUtil;
 
 import java.security.PrivateKey;
@@ -41,11 +41,11 @@ public class Transaction {
 
         //gather transaction inputs (Make sure they are unspent):
         for(TransactionInput i : inputs) {
-            i.UTXO = NoobChainFinal.UTXOs.get(i.transactionOutputId);
+            i.UTXO = RunBlockChain.UTXOs.get(i.transactionOutputId);
         }
 
         //check if transaction is valid:
-        if(getInputsValue() < NoobChainFinal.minimumTransaction) {
+        if(getInputsValue() < RunBlockChain.minimumTransaction) {
             System.out.println("#Transaction Inputs to small: " + getInputsValue());
             return false;
         }
@@ -58,13 +58,13 @@ public class Transaction {
 
         //add outputs to Unspent list
         for(TransactionOutput o : outputs) {
-            NoobChainFinal.UTXOs.put(o.id , o);
+            RunBlockChain.UTXOs.put(o.id , o);
         }
 
         //remove transaction inputs from UTXO lists as spent:
         for(TransactionInput i : inputs) {
             if(i.UTXO == null) continue; //if Transaction can't be found skip it
-            NoobChainFinal.UTXOs.remove(i.UTXO.id);
+            RunBlockChain.UTXOs.remove(i.UTXO.id);
         }
 
         return true;

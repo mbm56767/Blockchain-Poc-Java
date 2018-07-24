@@ -11,7 +11,7 @@ import java.util.HashMap;
 /**
  * Created by rajesh on 26/05/18.
  */
-public class NoobChain {
+public class RunBlockChainOld {
 
     public static ArrayList<Block> blockchain = new ArrayList<Block>();
 
